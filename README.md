@@ -34,6 +34,14 @@ If your environment uses a different variable then `REMOTE_USER`
 you can adjust this like so:
 
     $wgAuthRemoteuserEnvVariable = 'HTTP_X_REMOTE_USER';
+    
+## Maintenance scripts
+
+Some maintenance scripts cannot be run from the command line when this extension
+is installed. You need to set the value of `REMOTE_USER` in the environment first:
+
+    $ export REMOTE_USER=someadminusername
+    $ /usr/bin/php maintenance/refreshLinks.php
 
 ## Implementation
 The constructor of AuthRemoteuser registers a hook to do the automatic login.
